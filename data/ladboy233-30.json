@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "ladboy233",
+  "risk": "2",
+  "title": "Position reward and interest can be truncated if accureInterest is always called within a short period of time",
+  "issueId": 30,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/30"
+}

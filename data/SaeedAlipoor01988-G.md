@@ -41,3 +41,15 @@ you check that token0 and token1 are not the same! but in the next line you chec
 if (token0 == address(0) || token1 == address(0)) revert ZeroAddressError();
 
 you don’t need to check both tokens. one token is enough.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Add unchecked {} for subtractions where the operands cannot underflow because of a previous require() or if-statement
+
+in the below line, we are checking that utilRate is more than Kink
+
+ if (util <= kink) {}
+
+so we can add unchecked to the below line!
+
+https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86ae0c8cb5913/src/core/JumpRate.sol#L20

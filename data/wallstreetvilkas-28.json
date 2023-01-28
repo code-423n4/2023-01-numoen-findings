@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "wallstreetvilkas",
+  "risk": "3",
+  "title": "incorrect assumption that the msg.sender is an actual valid contract that actually transfers the collateral",
+  "issueId": 28,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/28"
+}

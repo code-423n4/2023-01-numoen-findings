@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "chaduke",
+  "risk": "2",
+  "title": "The Lendgine's borrow and repayment functionality will be frozen forever once liquidity is borrowed but then was completely accrued",
+  "issueId": 48,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/48"
+}

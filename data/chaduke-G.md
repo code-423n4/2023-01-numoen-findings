@@ -1,9 +1,11 @@
-G1. Since we know ``rewardPerPosition >= position.rewardPerPositionPaid``, we can add "unchecked" here to save gas:
-```
-function newTokensOwed(Position.Info memory position, uint256 rewardPerPosition) internal pure returns (uint256) {
-    return FullMath.mulDiv(position.size, unchecked{rewardPerPosition - position.rewardPerPositionPaid}, 1 ether);
-  }
-```
+G1. Using unchecked for these blocks can save gas. Due to a previous check or the property of the contracts, underflow/overflow is impossible. 
+1] https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86ae0c8cb5913/src/core/Lendgine.sol#L244
+
+2] https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86ae0c8cb5913/src/core/Lendgine.sol#L256
+
+3] https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86ae0c8cb5913/src/core/libraries/Position.sol#L70
+
+4] https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86ae0c8cb5913/src/periphery/LiquidityManager.sol#L178
 
 G2. Optimization of the update() function for gas saving.
 https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86ae0c8cb5913/src/core/libraries/Position.sol#L38-L65
@@ -35,13 +37,6 @@ function update(
 }
 ```
 
-G3. We can add unchecked here due to L253's check.
-https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86ae0c8cb5913/src/core/Lendgine.sol#L256
-```
-unchecked{
-   totalLiquidityBorrowed = _totalLiquidityBorrowed - dilutionLP;
-}
-```
 
 
 

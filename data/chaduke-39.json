@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "chaduke",
+  "risk": "3",
+  "title": "Anybody can steal the whole balance of WETH from the LiquidityManager",
+  "issueId": 39,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/39"
+}

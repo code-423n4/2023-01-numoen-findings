@@ -8,4 +8,4 @@ The `checkDeadline` modifier in the contract `LendgineRouter.so`l is designed to
 https://github.com/code-423n4/2023-01-numoen/blob/main/src/periphery/LendgineRouter.sol#L65-L69
 
 ## Impact:
-An attacker with control over the node that is verifying the smart contract can bypass the `checkDeadline` modifier in the contract` LendgineRouter.sol`. The attacker can do this by manipulating the time on the node or by manipulating the `block.timestamp` value. This would allow the attacker to access functions, such as the mint function, even after the deadline has passed. This vulnerability could result in unauthorized access to functions and potential financial loss.
+An attacker with control over the node that is verifying the smart contract can bypass the `checkDeadline` modifier in the contract` LendgineRouter.sol`. The attacker can do this by manipulating the time on the node or by manipulating the `block.timestamp` value. This would allow the attacker to access functions, such as the `mint` function in the contract, even after the deadline has passed. This vulnerability could result in unauthorized access to functions and potential financial loss.

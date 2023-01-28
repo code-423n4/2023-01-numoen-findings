@@ -7,9 +7,10 @@ G1. Using unchecked for these blocks can save gas. Due to a previous check or th
 
 4] https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86ae0c8cb5913/src/periphery/LiquidityManager.sol#L178
 
+5] https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86ae0c8cb5913/src/core/Pair.sol#L122-L123
+
 G2. Optimization of the update() function for gas saving.
 https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86ae0c8cb5913/src/core/libraries/Position.sol#L38-L65
-
 
 https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86ae0c8cb5913/src/core/libraries/Position.sol#L57
 This (L57) line can be eliminated to save gas. Justification: when ``sizeDelta == 0``, the value of ``sizeNext`` is no use afterwards. There is no point to assign a value to it. In addition, multiple if statements can be consolidated to save gas by not doing too many tests. We reduced it from 5-if to 3-if. 

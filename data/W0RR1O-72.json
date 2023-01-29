@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "W0RR1O",
+  "risk": "2",
+  "title": "Possible draining of funds/tokens in function `sweepToken()` in contract Payment.sol",
+  "issueId": 72,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/72"
+}

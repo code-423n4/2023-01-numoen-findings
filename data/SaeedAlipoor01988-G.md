@@ -60,3 +60,32 @@ https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86a
 Using the addition operator instead of plus-equals saves 113 gas.
 
 https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86ae0c8cb5913/src/core/Lendgine.sol#L257
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+save gas by using if else instead of calculating the same expression twice #122 
+can save some gas by not evaluating the same expression twice
+
+
+https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86ae0c8cb5913/src/periphery/SwapHelper.sol#L81
+https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86ae0c8cb5913/src/periphery/SwapHelper.sol#L76
+
+code before:
+amount = params.amount > 0
+        ? UniswapV2Library.getAmountOut(uint256(params.amount), reserveIn, reserveOut)
+        : UniswapV2Library.getAmountIn(uint256(-params.amount), reserveIn, reserveOut);
+(uint256 amountIn, uint256 amountOut) =
+        params.amount > 0 ? (uint256(params.amount), amount) : (amount, uint256(-params.amount));
+
+code after:
+uint256 amountIn, uint256 amountOut
+if (params.amount > 0){
+amount = UniswapV2Library.getAmountOut(uint256(params.amount), reserveIn, reserveOut);
+(amountIn, amountOut) = (uint256(params.amount), amount)
+} else{
+
+amount = UniswapV2Library.getAmountIn(uint256(-params.amount), reserveIn, reserveOut);
+(amountIn, amountOut) = (amount, uint256(-params.amount))
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

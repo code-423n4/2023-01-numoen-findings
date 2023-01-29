@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "chaduke",
+  "risk": "3",
+  "title": "The mint() function of the LendgineRouter() will always REVERT due to balance check failure",
+  "issueId": 60,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/60"
+}

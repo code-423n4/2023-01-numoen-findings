@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "chaduke",
+  "risk": "3",
+  "title": "The pay() function will pay from the contract rather than from the specified payer when payment is in WETH",
+  "issueId": 69,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/69"
+}

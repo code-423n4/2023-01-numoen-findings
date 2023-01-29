@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "ladboy233",
+  "risk": "2",
+  "title": "Recipient should not be set to LendgineRouter.sol and LiquidityManager.sol when removing liquidity or burning shares or collecting token",
+  "issueId": 62,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/62"
+}

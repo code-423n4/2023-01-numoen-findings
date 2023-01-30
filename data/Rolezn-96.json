@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "Rolezn",
+  "risk": "2",
+  "title": "`utilizationRate` will not always be 18 decimals as expected",
+  "issueId": 96,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/96"
+}

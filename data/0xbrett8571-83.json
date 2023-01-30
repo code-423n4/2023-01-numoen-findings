@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "0xbrett8571",
+  "risk": "3",
+  "title": "Arithmetic Overflow/Underflow Vulnerability in \"getBorrowRate\" and \"getSupplyRate\" Functions.",
+  "issueId": 83,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/83"
+}

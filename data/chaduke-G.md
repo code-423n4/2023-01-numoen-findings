@@ -38,3 +38,28 @@ function update(
 }
 ```
 
+G3. A short-circuit rule can be applied to the ``Drips._squeezAmt`` function: when the binary search for the ``idx`` of the first occurence of `userId` fails, we can return 0.
+https://github.com/code-423n4/2023-01-drips/blob/9fd776b50f4be23ca038b1d0426e63a69c7a511d/src/Drips.sol#L470-L498
+```diff
+ function _squeezedAmt(
+        uint256 userId,
+        DripsHistory memory dripsHistory,
+        uint32 squeezeStartCap,
+        uint32 squeezeEndCap
+    ) private view returns (uint128 squeezedAmt) {
+        DripsReceiver[] memory receivers = dripsHistory.receivers;
+        // Binary search for the `idx` of the first occurrence of `userId`
+        uint256 idx = 0;
+        for (uint256 idxCap = receivers.length; idx < idxCap;) {
+            uint256 idxMid = (idx + idxCap) / 2;
+            if (receivers[idxMid].userId < userId) {
+                idx = idxMid + 1;
+            } else {
+                idxCap = idxMid;
+            }
+        }
++     if(receivers[idx] != userId) return 0 // @audit: short circuit
+
+```
+
+

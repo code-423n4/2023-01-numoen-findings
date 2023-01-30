@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "0xbrett8571",
+  "risk": "2",
+  "title": "Bypassing Non-Reentrant Modifier its a Vulnerability in the Contract.",
+  "issueId": 79,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/79"
+}

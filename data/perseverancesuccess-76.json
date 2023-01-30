@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "perseverancesuccess",
+  "risk": "3",
+  "title": "Attackers can front-run Lengine.burn transaction of users to steal money of users ",
+  "issueId": 76,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/76"
+}

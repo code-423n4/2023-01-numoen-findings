@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "0xbrett8571",
+  "risk": "3",
+  "title": "Equivalent Token Address Vulnerability in Factory Contract.",
+  "issueId": 77,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/77"
+}

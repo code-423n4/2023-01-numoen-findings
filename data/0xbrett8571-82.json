@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "0xbrett8571",
+  "risk": "3",
+  "title": "Division by Zero Error in Utilization Rate Calculation.",
+  "issueId": 82,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/82"
+}

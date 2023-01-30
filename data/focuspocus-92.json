@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "focuspocus",
+  "risk": "3",
+  "title": "Unchecked ERC20 Transfer , msg.sender is not used as from in transferFrom.",
+  "issueId": 92,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/92"
+}

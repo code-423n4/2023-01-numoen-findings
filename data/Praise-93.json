@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "Praise",
+  "risk": "3",
+  "title": "no implementation of access control in withdraw() function",
+  "issueId": 93,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/93"
+}

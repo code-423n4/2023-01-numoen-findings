@@ -73,3 +73,23 @@ To increase explicitness and readability, take into account introducing and util
 ### References
 
 - [Unnamed return parameters | Opyn Bull Strategy Contracts Audit](https://blog.openzeppelin.com/opyn-bull-strategy-contracts-audit/#unnamed-return-parameters)
+
+
+## [L-04] Avoid using abi.encodePacked() with dynamic types when passing the result to a hash function
+
+### Description
+
+Instead of using `abi.encodePacked()` use `abi.encode()`. It will pad items to 32 bytes, which will prevent [hash collisions](https://docs.soliditylang.org/en/v0.8.13/abi-spec.html#non-standard-packed-mode).
+
+It is possible to cast to `bytes()` or `bytes32()` in place of `abi.encodePacked()` when there is just one parameter, see "[how to compare strings in solidity?](https://ethereum.stackexchange.com/questions/30912/how-to-compare-strings-in-solidity#answer-82739)". `bytes.concat()` should be used if all parameters are strings or bytes.
+
+### Findings
+
+- [src/periphery/UniswapV2/libraries/UniswapV2Library.sol#L26](https://github.com/code-423n4/2023-01-numoen/blob/main/src/periphery/UniswapV2/libraries/UniswapV2Library.sol#L26)
+```Solidity
+keccak256(abi.encodePacked(token0, token1)),
+```
+
+### Resources
+
+- [[L-1] abi.encodePacked() should not be used with dynamic types when passing the result to a hash function such as keccak256()](https://gist.github.com/GalloDaSballo/39b929e8bd48704b9d35b448aaa29480#l-1--abiencodepacked-should-not-be-used-with-dynamic-types-when-passing-the-result-to-a-hash-function-such-as-keccak256)

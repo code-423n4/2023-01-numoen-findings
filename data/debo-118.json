@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "debo",
+  "risk": "3",
+  "title": "Successful get balance request to victim contract from attack contract and also costing the victim contract gas fees",
+  "issueId": 118,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/118"
+}

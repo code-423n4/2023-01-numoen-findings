@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "focuspocus",
+  "risk": "2",
+  "title": "Invariant funtion in Pair Contract doesn't ensure liquidity is valid",
+  "issueId": 121,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/121"
+}

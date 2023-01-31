@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "GT",
+  "risk": "2",
+  "title": "DoS with a failed call",
+  "issueId": 120,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/120"
+}

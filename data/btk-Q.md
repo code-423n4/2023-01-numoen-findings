@@ -24,6 +24,8 @@
 | [NC-10] | Remove Unused Codes                                                        | 1             |
 | [NC-11] | For functions, follow Solidity standard naming conventions                 | All Contracts |
 | [NC-12] | Not using the named return variables anywhere in the function is confusing | 3             |
+| [NC-13] | Constants should be defined rather than using magic numbers                | 4             |
+| [NC-14] | Need Fuzzing test                                                          | All Contracts |
 
 ## [L-01] Solmate's `SafeTransferLib.sol` doesn't check whether the ERC20 contract exists
 
@@ -327,7 +329,7 @@ The protocol don't follow solidity standard naming convention.
 
 Follow solidity standard naming convention.
 
-## [NC-12]
+## [NC-12] Not using the named return variables anywhere in the function is confusing
 
 #### Description
 
@@ -356,3 +358,42 @@ Consider changing the variable to be an unnamed one.
     return (borrowedLiquidity * 1e18) / totalLiquidity;
   }
 ```
+## [NC-13] Constants should be defined rather than using magic numbers
+
+#### Description
+
+```solidity
+    uint256 amountInWithFee = amountIn * 997;
+```
+```solidity
+    uint256 denominator = (reserveIn * 1000) + amountInWithFee;
+```
+```solidity
+    uint256 numerator = reserveIn * amountOut * 1000;
+```
+```solidity
+    uint256 denominator = (reserveOut - amountOut) * 997;
+```
+
+#### Lines of code 
+
+- [UniswapV2Library.sol#L62](https://github.com/code-423n4/2023-01-numoen/blob/main/src/periphery/UniswapV2/libraries/UniswapV2Library.sol#L62)
+- [UniswapV2Library.sol#L64](https://github.com/code-423n4/2023-01-numoen/blob/main/src/periphery/UniswapV2/libraries/UniswapV2Library.sol#L64)
+- [UniswapV2Library.sol#L80](https://github.com/code-423n4/2023-01-numoen/blob/main/src/periphery/UniswapV2/libraries/UniswapV2Library.sol#L80)
+- [UniswapV2Library.sol#L81](https://github.com/code-423n4/2023-01-numoen/blob/main/src/periphery/UniswapV2/libraries/UniswapV2Library.sol#L81)
+
+## [NC-14] Need Fuzzing test
+
+#### Description
+
+As Alberto Cuesta Canada said: Fuzzing is not easy, the tools are rough, and the math is hard, but it is worth it. Fuzzing gives me a level of confidence in my smart contracts that I didn’t have before. Relying just on unit testing anymore and poking around in a testnet seems reckless now.
+
+> Ref: https://medium.com/coinmonks/smart-contract-fuzzing-d9b88e0b0a05
+
+#### Lines of code 
+
+- [All Contracts](https://github.com/code-423n4/2023-01-numoen/tree/main/src)
+
+#### Recommended Mitigation Steps
+
+Use fuzzing test like Echidna.

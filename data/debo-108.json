@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "debo",
+  "risk": "2",
+  "title": "External call from attacker contract can read the hidden PERMIT_TYPEHASH data called 0x6e71edae12b1b97f4d1f60370fef10105fa2faae0126114a169c64845d6126c9",
+  "issueId": 108,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/108"
+}

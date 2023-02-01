@@ -84,3 +84,32 @@ Manual Analysis
 ### Recommended Mitigation Steps
 
 Recommend defining constants for the numbers used throughout the code.
+
+
+# 5: USE OF BLOCK.TIMESTAMP
+
+Vulnerability details
+
+## Context:
+
+Block timestamps have been used historically for a number of purposes, including entropy for random numbers (see the Entropy Illusion for more information), locking funds for a set amount of time, and numerous state-changing time-dependent conditional statements. The ability of miners to slightly modify timestamps can be risky if block timestamps are used improperly in smart contracts.
+
+Reference: https://swcregistry.io/docs/SWC-116 
+
+## Proof of Concept
+
+Lendgine.sol - Instances (3)
+
+LiquidityManager.sol - Instances (1)
+
+LendgineRouter.sol - Instances (1)
+
+## Tools Used
+
+Manual Analysis
+
+### Recommended Mitigation Steps
+
+1. Block timestamps shouldn't be utilized to create random numbers or entropy.
+
+2. Use of trusted oracles

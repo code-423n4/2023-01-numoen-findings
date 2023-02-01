@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "0x5rings",
+  "risk": "3",
+  "title": "Loss of  funds - User has control of the fallback function",
+  "issueId": 155,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/155"
+}

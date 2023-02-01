@@ -617,3 +617,22 @@ File: src/periphery/libraries/LendgineAddress.sol
 #### **Recommendation**
 
 The lines should be split when they reach that length.
+
+## Low Issues
+
+|     | Issue                             |
+| --- | :-------------------------------- |
+| L-1 | Potential underflow               |
+
+### [L-1] Potential underflow
+
+In the line `uint256 denominator = (reserveOut - amountOut) * 997;` there is a potential for underflow if `amountOut >= reserveOut`, causing `(reserveOut - amountOut)` to result in a negative number. In this case, the value of `denominator` will be incorrect and cause an error.
+
+##### **Proof Of Concept**
+
+```solidity
+File: src/periphery/UniswapV2/libraries/UniswapV2Library.sol
+
+81:   uint256 denominator = (reserveOut - amountOut) * 997;
+
+```

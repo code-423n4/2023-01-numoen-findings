@@ -1,7 +1,3 @@
-The fact that a function always produces arbitrage opportuniy
-
-An inverse pool of the current thing, how does that effect?
-
 Pair.sol, lines 53 - 67:
 
 invariant can leave the pool in an where it has more liquidity that it has recorded. When a + b > c + d, protocol expects the arbitrageurs to come and take the liquidity away, or call the `mint`function in `lendgine` to add the liquidity without paying anything until a + b = c + d. Protocol can avoid finishing up in states with a + b > c + d where they introduce clear arbitrage opportunities and can easily return the remaining amount to the owner.

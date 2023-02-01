@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "hansfriese",
+  "risk": "2",
+  "title": "`PositionMath.addDelta` reverts in an edge case for Solidity version >= 0.8",
+  "issueId": 203,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/203"
+}

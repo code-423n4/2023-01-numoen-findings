@@ -60,7 +60,38 @@ https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86a
 
 https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86ae0c8cb5913/src/periphery/libraries/LendgineAddress.sol#L2
 
+QA4. https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86ae0c8cb5913/src/periphery/LiquidityManager.sol#L147-L153
 
+The first liquidity depositor can manipulate the price of token0/token1. This is possible because of the first reserve0 and reserve1 will be decided by params.amountMin and params.amount1Min:
+
+```
+https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86ae0c8cb5913/src/periphery/LiquidityManager.sol#L147-L153
+
+ if (totalLiquidity == 0) {
+      amount0 = params.amount0Min;
+      amount1 = params.amount1Min;
+    } else {
+      amount0 = FullMath.mulDivRoundingUp(params.liquidity, r0, totalLiquidity);
+      amount1 = FullMath.mulDivRoundingUp(params.liquidity, r1, totalLiquidity);
+    }
+
+https://github.com/code-423n4/2023-01-numoen/blob/2ad9a73d793ea23a25a381faadc86ae0c8cb5913/src/core/Pair.sol#L108-L110
+   reserve0 = _reserve0 - SafeCast.toUint120(amount0); // SSTORE
+    reserve1 = _reserve1 - SafeCast.toUint120(amount1); // SSTORE
+    totalLiquidity = _totalLiquidity - liquidity; // SSTORE
+
+```
+
+For example, the first depositor can deposit a tiny amount of token0  and a relatively larger amount of token1. As a result, all future deposits have to deposit large amount of token1 and tiny amount of token0 (or even ZERO considering rounding error). This might not be a desirable behavior of the system.
+
+To mitigate:
+1) Constraint the minium deposit for token1:
+2) The creator of a ``Lendgine`` will send a small amount of token0 and token1 and lock them in the contract forever. 
+
+
+
+
+ 
 
 
 

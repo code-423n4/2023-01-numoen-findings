@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "peakbolt",
+  "risk": "2",
+  "title": "LendgineRouter.mint() will always fail if collateral is a fee-on-transfer token",
+  "issueId": 167,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/167"
+}

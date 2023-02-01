@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "paco",
+  "risk": "2",
+  "title": "Lack of slippage protection when swapping on Uniswap v2/v3",
+  "issueId": 216,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/216"
+}

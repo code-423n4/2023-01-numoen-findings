@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "0Kage",
+  "risk": "2",
+  "title": "Multiple combinations of token0/token1 for a given liquidity exist to satisfies the custom variant of AMM pool. A naive LP or Power token holder can transfer more token0/token1 then necessary when minting & burning respectively",
+  "issueId": 244,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/244"
+}

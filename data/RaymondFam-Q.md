@@ -58,3 +58,14 @@ https://docs.soliditylang.org/en/v0.8.16/natspec-format.html
 For instance, it will be of added values to the users and developers if:
 
 - a comprehensive NatSpec is provided on [LiquidityManager.sol](https://github.com/code-423n4/2023-01-numoen/blob/main/src/periphery/LiquidityManager.sol) and [LendgineRouter.sol](https://github.com/code-423n4/2023-01-numoen/blob/main/src/periphery/LendgineRouter.sol)
+
+## Contract existence check
+The following token transfers associated with `SafeTransferLib.sol`, are some of the instances performing [low-level calls without confirming contract’s existence that could return success even though no function call was executed](https://docs.soliditylang.org/en/v0.8.7/control-structures.html#error-handling-assert-require-revert-and-exceptions):
+
+[Lendgine.sol](https://github.com/code-423n4/2023-01-numoen/blob/main/src/core/Lendgine.sol)
+
+```solidity
+116:    SafeTransferLib.safeTransfer(token1, to, collateral); // optimistically transfer
+
+202:      SafeTransferLib.safeTransfer(token1, to, collateral);
+```

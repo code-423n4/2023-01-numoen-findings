@@ -59,3 +59,28 @@ Manual Analysis
 An old version of Solidity is used, a newer version can be used (0.8.17)
 
 
+# 3: USE CONSTANTS FOR NUMBERS
+
+Vulnerability details
+
+### Impact
+
+Throughout the code, numbers like 1e18  are used multiple times. It is quite easy to make a mistake somewhere, also when comparing values.
+
+## Proof of Concept
+
+JumpRate.sol - Instances (5)
+
+Pair.sol - Instances (3)
+
+Lendgine.sol - Instances (4)
+
+LiquidityManager.sol - Instances (3)
+
+## Tools Used
+
+Manual Analysis
+
+### Recommended Mitigation Steps
+
+Recommend defining constants for the numbers used throughout the code.

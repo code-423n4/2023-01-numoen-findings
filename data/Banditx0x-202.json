@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "Banditx0x",
+  "risk": "3",
+  "title": "Lendgine contract can be drained through mint() function due to lack of Access Control",
+  "issueId": 202,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/202"
+}

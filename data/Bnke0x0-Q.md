@@ -107,47 +107,13 @@ Use a more recent version of solidity
 
 
 
-### [N05] Event is missing `indexed` fields
-
-#### Impact
-Each event should use three indexed fields if there are three or more fields
-#### Findings:
-```
-2023-01-numoen/src/core/Lendgine.sol::25 => event Mint(address indexed sender, uint256 collateral, uint256 shares, uint256 liquidity, address indexed to);
-2023-01-numoen/src/core/Lendgine.sol::27 => event Burn(address indexed sender, uint256 collateral, uint256 shares, uint256 liquidity, address indexed to);
-2023-01-numoen/src/core/Lendgine.sol::29 => event Deposit(address indexed sender, uint256 size, uint256 liquidity, address indexed to);
-2023-01-numoen/src/core/Lendgine.sol::31 => event Withdraw(address indexed sender, uint256 size, uint256 liquidity, address indexed to);
-2023-01-numoen/src/core/Lendgine.sol::33 => event AccrueInterest(uint256 timeElapsed, uint256 collateral, uint256 liquidity);
-2023-01-numoen/src/core/Lendgine.sol::35 => event AccruePositionInterest(address indexed owner, uint256 rewardPerPosition);
-2023-01-numoen/src/core/Lendgine.sol::37 => event Collect(address indexed owner, address indexed to, uint256 amount);
-2023-01-numoen/src/core/Pair.sol::21 => event Mint(uint256 amount0In, uint256 amount1In, uint256 liquidity);
-2023-01-numoen/src/core/Pair.sol::23 => event Burn(uint256 amount0Out, uint256 amount1Out, uint256 liquidity, address indexed to);
-2023-01-numoen/src/core/Pair.sol::25 => event Swap(uint256 amount0Out, uint256 amount1Out, uint256 amount0In, uint256 amount1In, address indexed to);
-```
 
 
 
 
 
-### [N06] `public` functions not called by the contract should be declared `external` instead
 
-#### Impact
-Contracts are allowed to override their parents’ functions and change the visibility from public to external .
-#### Findings:
-```
-2023-01-numoen/src/core/JumpRate.sol::13 => function getBorrowRate(uint256 borrowedLiquidity, uint256 totalLiquidity) public pure override returns (uint256 rate) {
-2023-01-numoen/src/core/Lendgine.sol::213 => function convertLiquidityToShare(uint256 liquidity) public view override returns (uint256) {
-2023-01-numoen/src/core/Lendgine.sol::219 => function convertShareToLiquidity(uint256 shares) public view override returns (uint256) {
-2023-01-numoen/src/core/Lendgine.sol::224 => function convertCollateralToLiquidity(uint256 collateral) public view override returns (uint256) {
-2023-01-numoen/src/core/Lendgine.sol::229 => function convertLiquidityToCollateral(uint256 liquidity) public view override returns (uint256) {
-2023-01-numoen/src/core/Pair.sol::53 => function invariant(uint256 amount0, uint256 amount1, uint256 liquidity) public view override returns (bool) {
-2023-01-numoen/src/periphery/Payment.sol::25 => function unwrapWETH(uint256 amountMinimum, address recipient) public payable {
-2023-01-numoen/src/periphery/Payment.sol::35 => function sweepToken(address token, uint256 amountMinimum, address recipient) public payable {
-```
-
-
-
-### [N07] Numeric values having to do with time should use time units for readability
+### [N05] Numeric values having to do with time should use time units for readability
 
 #### Impact
 There are [units](https://docs.soliditylang.org/en/latest/units-and-global-variables.html#time-units) for seconds, minutes, hours, days, and weeks
@@ -158,7 +124,7 @@ There are [units](https://docs.soliditylang.org/en/latest/units-and-global-varia
 
 
 
-### [N08] NC-library/interface files should use fixed compiler versions, not floating ones
+### [N06] NC-library/interface files should use fixed compiler versions, not floating ones
 
 
 #### Findings:

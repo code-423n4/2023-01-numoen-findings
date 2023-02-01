@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "bin2chen",
+  "risk": "2",
+  "title": "createLendgine() No verification that token0Exp/token1Exp is correct ",
+  "issueId": 146,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/146"
+}

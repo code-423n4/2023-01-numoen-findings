@@ -37,8 +37,9 @@ Total 11 issues
 | [NC-15] |Require messages are too short or not | 6 |
 | [NC-16] |Use underscores for number literals | 2 |
 | [NC-17] |Showing the actual values of numbers in NatSpec comments makes checking and reading code easier | 1 |
+| [NC-18] |Lines are too long| 12 |
 
-Total 17 issues
+Total 18 issues
 
 ### [L-01] Some tokens can have 2 addresses, so should be done check other require
 
@@ -1085,4 +1086,39 @@ src/core/Lendgine.sol:
   251  
 - 252:     uint256 dilutionLPRequested = (FullMath.mulDiv(borrowRate, _totalLiquidityBorrowed, 1e18) * timeElapsed) / 365 days;
 + 252:     uint256 dilutionLPRequested = (FullMath.mulDiv(borrowRate, _totalLiquidityBorrowed, 1e18) * timeElapsed) / 365 days; //  31_536_000 (365*24*60)
+```
+
+### [N-18] Lines are too long
+
+[Lendgine.sol#L215](https://github.com/code-423n4/2023-01-numoen/blob/main/src/core/Lendgine.sol#L215)
+[Lendgine.sol#L252](https://github.com/code-423n4/2023-01-numoen/blob/main/src/core/Lendgine.sol#L252)
+[Lendgine.sol#L253](https://github.com/code-423n4/2023-01-numoen/blob/main/src/core/Lendgine.sol#L253)
+[LiquidityManager.sol#L178](https://github.com/code-423n4/2023-01numoen/blob/main/src/periphery/LiquidityManager.sol#L178)
+[LiquidityManager.sol#L214](https://github.com/code-423n4/2023-01-numoen/blob/main/src/periphery/LiquidityManager.sol#L214)
+[LiquidityManager.sol#L184](https://github.com/code-423n4/2023-01-numoen/blob/main/src/periphery/LiquidityManager.sol#L184)
+[Position.sol#L83](https://github.com/code-423n4/2023-01-numoen/blob/main/src/core/libraries/Position.sol#L83)
+[Position.sol#L69](https://github.com/code-423n4/2023-01-numoen/blob/main/src/core/libraries/Position.sol#L69)
+[SwapHelper.sol#L42](https://github.com/code-423n4/2023-01-numoen/blob/main/src/periphery/SwapHelper.sol#L42)
+[SwapHelper.sol#L38](https://github.com/code-423n4/2023-01-numoen/blob/main/src/periphery/SwapHelper.sol#L38)
+[SwapHelper.sol#L69](https://github.com/code-423n4/2023-01-numoen/blob/main/src/periphery/SwapHelper.sol#L69)
+[SwapHelper.sol#L69](https://github.com/code-423n4/2023-01-numoen/blob/main/src/periphery/SwapHelper.sol#L69)
+
+
+
+**Description:**
+It is generally recommended that lines in the source code should not exceed 80-120 characters. Today's screens are much larger, so in some cases it makes sense to expand that.The lines above should be split when they reach that length, as the files will most likely be on GitHub and GitHub always uses a scrollbar when the length is more than 164 characters.
+
+(why-is-80-characters-the-standard-limit-for-code-width)[https://softwareengineering.stackexchange.com/questions/148677/why-is-80-characters-the-standard-limit-for-code-width]
+
+**Recommendation:**
+Multiline output parameters and return statements should follow the same style recommended for wrapping long lines found in the Maximum Line Length section.
+
+https://docs.soliditylang.org/en/v0.8.17/style-guide.html#introduction
+
+```js
+thisFunctionCallIsReallyLong(
+    longArgument1,
+    longArgument2,
+    longArgument3
+);
 ```

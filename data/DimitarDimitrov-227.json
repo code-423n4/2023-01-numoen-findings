@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "DimitarDimitrov",
+  "risk": "2",
+  "title": "Mint to without check for zero address",
+  "issueId": 227,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/227"
+}

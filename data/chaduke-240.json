@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "chaduke",
+  "risk": "2",
+  "title": "The LendgineRouter.burn() will always REVERT due to the callback function forgot to send the due token0 back. ",
+  "issueId": 240,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/240"
+}

@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "bin2chen",
+  "risk": "2",
+  "title": "addLiquidity() lacks slippage check, resulting in too large amount0/amount1",
+  "issueId": 147,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/147"
+}

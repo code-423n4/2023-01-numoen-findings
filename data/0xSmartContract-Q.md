@@ -12,8 +12,9 @@
 |[L-08]|Loss of precision due to rounding| 1 |
 |[L-09]|Cross-chain replay attacks are possible with  `computeAddress `| 1 |
 |[L-10]|Use Fuzzing Test for complicated dex code bases | All Contracts |
+|[L-11]|Using >/>= without specifying an upper bound is unsafe | 3 |
 
-Total 10 issues
+Total 11 issues
 
 
 ### Non-Critical Issues List
@@ -634,7 +635,22 @@ _Fuzzing is not easy, the tools are rough, and the math is hard, but it is worth
 https://medium.com/coinmonks/smart-contract-fuzzing-d9b88e0b0a05
 
 
+### [L-11] Using >/>= without specifying an upper bound is unsafe
 
+
+```solidity
+3 results - 3 files
+
+src/core/libraries/PositionMath.sol:
+  2: pragma solidity >=0.5.0;
+
+src/periphery/libraries/LendgineAddress.sol:
+  2: pragma solidity >=0.5.0;
+
+src/periphery/UniswapV2/libraries/UniswapV2Library.sol:
+  1: pragma solidity >=0.8.0;
+
+```
 
 ### [N-01] Insufficient coverage
 

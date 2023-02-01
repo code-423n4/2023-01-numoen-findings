@@ -124,3 +124,18 @@ As an example, the following `<=` inequality instance may be refactored as follo
 // x < 10 + 1 is the same as x < 11; [10, 9, 8 ...]
 +    if (util < kink + 1) {
 ```
+## Use of named returns for local variables saves gas
+You can have further advantages in term of gas cost by simply using named return values as temporary local variable.
+
+For instance, the code block below may be refactored as follows:
+
+[File: Lendgine.sol#L213-L216](https://github.com/code-423n4/2023-01-numoen/blob/main/src/core/Lendgine.sol#L213-L216)
+
+```diff
+-  function convertLiquidityToShare(uint256 liquidity) public view override returns (uint256) {
++  function convertLiquidityToShare(uint256 liquidity) public view override returns (uint256 share_) {
+    uint256 _totalLiquidityBorrowed = totalLiquidityBorrowed; // SLOAD
+-    return _totalLiquidityBorrowed == 0 ? liquidity : FullMath.mulDiv(liquidity, totalSupply, _totalLiquidityBorrowed);
++    share_ = _totalLiquidityBorrowed == 0 ? liquidity : FullMath.mulDiv(liquidity, totalSupply, _totalLiquidityBorrowed);
+  }
+```

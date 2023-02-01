@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "DimitarDimitrov",
+  "risk": "3",
+  "title": "Make calculation using 1e18 but protocol allows tokens with different scale",
+  "issueId": 228,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/228"
+}

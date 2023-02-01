@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "0x5rings",
+  "risk": "2",
+  "title": "Fee on Tokens may revert or loose more collateral than expected.",
+  "issueId": 156,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/156"
+}

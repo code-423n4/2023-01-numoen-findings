@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "Udsen",
+  "risk": "2",
+  "title": "TOKEN BALANCE OF A PARTICULAR ADDRESS IS NOT CHECKED AGAINST THE REQUESTED TRANSFER AMOUNT INSIDE TRANSFER AND TRANSFERFROM FUNCTIONS IN `ERC20.sol` CONTRACT",
+  "issueId": 288,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/288"
+}

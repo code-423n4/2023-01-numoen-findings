@@ -19,22 +19,10 @@ Avoids a Gusset (20000 gas)
 
 
 
-### [G02] `require()`/`revert()` strings longer than 32 bytes cost extra gas
 
 
 
-#### Findings:
-```
-2023-01-numoen/src/periphery/UniswapV2/libraries/UniswapV2Library.sol::11 => require(tokenA != tokenB, "UniswapV2Library: IDENTICAL_ADDRESSES");
-2023-01-numoen/src/periphery/UniswapV2/libraries/UniswapV2Library.sol::60 => require(amountIn > 0, "UniswapV2Library: INSUFFICIENT_INPUT_AMOUNT");
-2023-01-numoen/src/periphery/UniswapV2/libraries/UniswapV2Library.sol::61 => require(reserveIn > 0 && reserveOut > 0, "UniswapV2Library: INSUFFICIENT_LIQUIDITY");
-2023-01-numoen/src/periphery/UniswapV2/libraries/UniswapV2Library.sol::78 => require(amountOut > 0, "UniswapV2Library: INSUFFICIENT_OUTPUT_AMOUNT");
-2023-01-numoen/src/periphery/UniswapV2/libraries/UniswapV2Library.sol::79 => require(reserveIn > 0 && reserveOut > 0, "UniswapV2Library: INSUFFICIENT_LIQUIDITY");
-```
-
-
-
-### [G03] Using `> 0` costs more gas than `!= 0` when used on a `uint` in a `require()` statement
+### [G02] Using `> 0` costs more gas than `!= 0` when used on a `uint` in a `require()` statement
 
 
 #### Findings:
@@ -46,7 +34,7 @@ Avoids a Gusset (20000 gas)
 ```
 
 
-### [G04] Splitting `require()` statements that use `&&` Cost gas
+### [G03] Splitting `require()` statements that use `&&` Cost gas
 
 
 
@@ -59,7 +47,7 @@ Avoids a Gusset (20000 gas)
 
 
 
-### [G05] Usage of `uints`/`ints` smaller than 32 bytes (256 bits) incurs overhead
+### [G04] Usage of `uints`/`ints` smaller than 32 bytes (256 bits) incurs overhead
 
 #### Impact
 > When using elements that are smaller than 32 bytes, your 
@@ -95,26 +83,10 @@ Use a larger size then downcast where needed
 
 
 
-### [G06] Use custom errors rather than `revert()`/`require()` strings to save deployment gas
-
-
-#### Findings:
-```
-2023-01-numoen/src/core/libraries/PositionMath.sol::14 => require((z = x - uint256(-y)) < x, "LS");
-2023-01-numoen/src/core/libraries/PositionMath.sol::16 => require((z = x + uint256(y)) >= x, "LA");
-2023-01-numoen/src/periphery/Payment.sol::22 => require(msg.sender == weth, "Not WETH9");
-2023-01-numoen/src/periphery/UniswapV2/libraries/UniswapV2Library.sol::11 => require(tokenA != tokenB, "UniswapV2Library: IDENTICAL_ADDRESSES");
-2023-01-numoen/src/periphery/UniswapV2/libraries/UniswapV2Library.sol::13 => require(token0 != address(0), "UniswapV2Library: ZERO_ADDRESS");
-2023-01-numoen/src/periphery/UniswapV2/libraries/UniswapV2Library.sol::60 => require(amountIn > 0, "UniswapV2Library: INSUFFICIENT_INPUT_AMOUNT");
-2023-01-numoen/src/periphery/UniswapV2/libraries/UniswapV2Library.sol::61 => require(reserveIn > 0 && reserveOut > 0, "UniswapV2Library: INSUFFICIENT_LIQUIDITY");
-2023-01-numoen/src/periphery/UniswapV2/libraries/UniswapV2Library.sol::78 => require(amountOut > 0, "UniswapV2Library: INSUFFICIENT_OUTPUT_AMOUNT");
-2023-01-numoen/src/periphery/UniswapV2/libraries/UniswapV2Library.sol::79 => require(reserveIn > 0 && reserveOut > 0, "UniswapV2Library: INSUFFICIENT_LIQUIDITY");
-```
 
 
 
-
-###  [G07] Use a more recent version of solidity
+###  [G05] Use a more recent version of solidity
 
 #### Impact
 Use a solidity version of at least 0.8.10 to have external calls skip
@@ -142,23 +114,10 @@ Use a solidity version of at least 0.8.10 to have external calls skip
 
 
 
-### [G08] Using `private` rather than `public` for constants, saves gas
-
-#### Impact
-If needed, the value can be read from the verified contract source 
-code. Savings are due to the compiler not having to create non-payable getter functions for deployment call data, and not adding another entry to the method ID table
-#### Findings:
-```
-2023-01-numoen/src/core/JumpRate.sol::7 => uint256 public constant override kink = 0.8 ether;
-2023-01-numoen/src/core/JumpRate.sol::9 => uint256 public constant override multiplier = 1.375 ether;
-2023-01-numoen/src/core/JumpRate.sol::11 => uint256 public constant override jumpMultiplier = 44.5 ether;
-```
 
 
 
-
-
-### [G09] `abi.encode()` is less efficient than abi.encodePacked()
+### [G06] `abi.encode()` is less efficient than abi.encodePacked()
 
 
 #### Findings:

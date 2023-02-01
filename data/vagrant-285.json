@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "vagrant",
+  "risk": "2",
+  "title": "Funds that are stored in LiquidityManager are at risk",
+  "issueId": 285,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/285"
+}

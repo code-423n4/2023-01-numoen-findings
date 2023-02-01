@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "Breeje",
+  "risk": "2",
+  "title": "DIVISION BEFORE MULTIPLICATION ERROR IN CALCULATING INTEREST CAN LEAD TO LARGER PRECISION LOSS",
+  "issueId": 249,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/249"
+}

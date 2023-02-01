@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "Udsen",
+  "risk": "2",
+  "title": "ERC20 TRANSFER AND TRANSFERFROM ARE NOT CHECKING FOR THE ZERO ADDRESS OF `to` AND `from`, DURING EXECUTION",
+  "issueId": 258,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/258"
+}

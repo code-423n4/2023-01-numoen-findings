@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "Banditx0x",
+  "risk": "3",
+  "title": "Lendgine contract can be drained through burn() function due to lack of access control and  ",
+  "issueId": 211,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/211"
+}

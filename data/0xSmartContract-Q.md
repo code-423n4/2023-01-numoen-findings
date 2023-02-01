@@ -11,8 +11,9 @@
 |[L-07]|Solmate's SafeTransferLib doesn't check whether the ERC20 contract exists | 29 |
 |[L-08]|Loss of precision due to rounding| 1 |
 |[L-09]|Cross-chain replay attacks are possible with  `computeAddress `| 1 |
+|[L-10]|Use Fuzzing Test for complicated dex code bases | All Contracts |
 
-Total 9 issues
+Total 10 issues
 
 
 ### Non-Critical Issues List
@@ -34,8 +35,9 @@ Total 9 issues
 | [NC-14] |Add NatSpec Mapping comment| 3 |
 | [NC-15] |Require messages are too short or not | 6 |
 | [NC-16] |Use underscores for number literals | 2 |
+| [NC-17] |Showing the actual values of numbers in NatSpec comments makes checking and reading code easier | 1 |
 
-Total 16 issues
+Total 17 issues
 
 ### [L-01] Some tokens can have 2 addresses, so should be done check other require
 
@@ -530,6 +532,110 @@ https://github.com/Harpieio/contracts/pull/4/commits/de24a50349ec014163180ba60b5
 ### Recommended Mitigation Steps
 Include the chain.id in keccak256
 
+
+
+### [L-10]  Use Fuzzing Test for complicated dex code bases 
+
+
+
+```solidity
+20 results - 5 files
+
+src/core/Lendgine.sol:
+  214      uint256 _totalLiquidityBorrowed = totalLiquidityBorrowed; // SLOAD
+  215:     return _totalLiquidityBorrowed == 0 ? liquidity : FullMath.mulDiv(liquidity, totalSupply, _totalLiquidityBorrowed);
+  216    }
+
+  219    function convertShareToLiquidity(uint256 shares) public view override returns (uint256) {
+  220:     return FullMath.mulDiv(totalLiquidityBorrowed, shares, totalSupply);
+  221    }
+
+  224    function convertCollateralToLiquidity(uint256 collateral) public view override returns (uint256) {
+  225:     return FullMath.mulDiv(collateral * token1Scale, 1e18, 2 * upperBound);
+  226    }
+
+  229    function convertLiquidityToCollateral(uint256 liquidity) public view override returns (uint256) {
+  230:     return FullMath.mulDiv(liquidity, 2 * upperBound, 1e18) / token1Scale;
+  231    }
+
+  251  
+  252:     uint256 dilutionLPRequested = (FullMath.mulDiv(borrowRate, _totalLiquidityBorrowed, 1e18) * timeElapsed) / 365 days;
+  253      uint256 dilutionLP = dilutionLPRequested > _totalLiquidityBorrowed ? _totalLiquidityBorrowed : dilutionLPRequested;
+
+  256      totalLiquidityBorrowed = _totalLiquidityBorrowed - dilutionLP;
+  257:     rewardPerPositionStored += FullMath.mulDiv(dilutionSpeculative, 1e18, totalPositionSize);
+  258      lastUpdate = block.timestamp;
+
+src/core/Pair.sol:
+  55  
+  56:     uint256 scale0 = FullMath.mulDiv(amount0, 1e18, liquidity) * token0Scale;
+  57:     uint256 scale1 = FullMath.mulDiv(amount1, 1e18, liquidity) * token1Scale;
+  58  
+
+  97  
+  98:     amount0 = FullMath.mulDiv(_reserve0, liquidity, _totalLiquidity);
+  99:     amount1 = FullMath.mulDiv(_reserve1, liquidity, _totalLiquidity);
+  100      if (amount0 == 0 && amount1 == 0) revert InsufficientOutputError();
+
+src/core/libraries/Position.sol:
+  69    function newTokensOwed(Position.Info memory position, uint256 rewardPerPosition) internal pure returns (uint256) {
+  70:     return FullMath.mulDiv(position.size, rewardPerPosition - position.rewardPerPositionPaid, 1 ether);
+  71    }
+
+  82      return
+  83:       totalLiquiditySupplied == 0 ? liquidity : FullMath.mulDiv(liquidity, totalPositionSize, totalLiquiditySupplied);
+  84    }
+
+  94    {
+  95:     return FullMath.mulDiv(position, totalLiquiditySupplied, totalPositionSize);
+  96    }
+
+src/periphery/LendgineRouter.sol:
+  208      } else {
+  209:       amount0 = FullMath.mulDivRoundingUp(liquidity, r0, totalLiquidity);
+  210:       amount1 = FullMath.mulDivRoundingUp(liquidity, r1, totalLiquidity);
+  211      }
+
+src/periphery/LiquidityManager.sol:
+  150      } else {
+  151:       amount0 = FullMath.mulDivRoundingUp(params.liquidity, r0, totalLiquidity);
+  152:       amount1 = FullMath.mulDivRoundingUp(params.liquidity, r1, totalLiquidity);
+  153      }
+
+  177      (, uint256 rewardPerPositionPaid,) = ILendgine(lendgine).positions(address(this));
+  178:     position.tokensOwed += FullMath.mulDiv(position.size, rewardPerPositionPaid - position.rewardPerPositionPaid, 1e18);
+  179      position.rewardPerPositionPaid = rewardPerPositionPaid;
+
+  213      (, uint256 rewardPerPositionPaid,) = ILendgine(lendgine).positions(address(this));
+  214:     position.tokensOwed += FullMath.mulDiv(position.size, rewardPerPositionPaid - position.rewardPerPositionPaid, 1e18);
+  215      position.rewardPerPositionPaid = rewardPerPositionPaid;
+
+  237      (, uint256 rewardPerPositionPaid,) = ILendgine(params.lendgine).positions(address(this));
+  238:     position.tokensOwed += FullMath.mulDiv(position.size, rewardPerPositionPaid - position.rewardPerPositionPaid, 1e18);
+  239      position.rewardPerPositionPaid = rewardPerPositionPaid;
+
+```
+
+
+**Description:**
+
+I recommend fuzzing testing in complex code structures like Dex conventions, especially Numoen, where there is an innovative code base and a lot of computation.
+
+**Recommendation:**
+
+Use should fuzzing test like Echidna.
+
+As Alberto Cuesta Canada said:
+
+_Fuzzing is not easy, the tools are rough, and the math is hard, but it is worth it. Fuzzing gives me a level of confidence in my smart contracts that I didn’t have before. Relying just on unit testing anymore and poking around in a testnet seems reckless now._
+
+
+
+https://medium.com/coinmonks/smart-contract-fuzzing-d9b88e0b0a05
+
+
+
+
 ### [N-01] Insufficient coverage
 
 **Description:**
@@ -955,4 +1061,12 @@ src/periphery/UniswapV2/libraries/UniswapV2Library.sol:
 **Recommendation:**
 Consider using underscores for number literals to improve its readability.
 
+### [N-17] Showing the actual values of numbers in NatSpec comments makes checking and reading code easier
 
+
+```diff
+src/core/Lendgine.sol:
+  251  
+- 252:     uint256 dilutionLPRequested = (FullMath.mulDiv(borrowRate, _totalLiquidityBorrowed, 1e18) * timeElapsed) / 365 days;
++ 252:     uint256 dilutionLPRequested = (FullMath.mulDiv(borrowRate, _totalLiquidityBorrowed, 1e18) * timeElapsed) / 365 days; //  31_536_000 (365*24*60)
+```

@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "cccz",
+  "risk": "2",
+  "title": "safeTransfer/safeTransferFrom function does not check for existence of ERC20 token contract",
+  "issueId": 141,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/141"
+}

@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "0Kage",
+  "risk": "3",
+  "title": "Malicious user can create a dummy `Lendgine` contract by mimicing a salt with same encoding format but using a malicious AMM invariant  function",
+  "issueId": 279,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/279"
+}

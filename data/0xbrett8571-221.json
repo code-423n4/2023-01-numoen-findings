@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "0xbrett8571",
+  "risk": "2",
+  "title": "Unchecked Return Values in SwapHelper.swap.",
+  "issueId": 221,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/221"
+}

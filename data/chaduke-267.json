@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "chaduke",
+  "risk": "2",
+  "title": "The LiquidityManager.pairMintCallback() might be exploited to steal funding from another user when the factory contract is compromised.",
+  "issueId": 267,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/267"
+}

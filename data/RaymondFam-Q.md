@@ -49,3 +49,12 @@ The protocol adopts version 0.8.4 on writing contracts. For better security, it 
 Security fix list in the versions can be found in the link below:
 
 https://github.com/ethereum/solidity/blob/develop/Changelog.md
+
+## Inadequate NatSpec
+Solidity contracts can use a special form of comments, i.e., the Ethereum Natural Language Specification Format (NatSpec) to provide rich documentation for functions, return variables and more. Please visit the following link for further details:
+
+https://docs.soliditylang.org/en/v0.8.16/natspec-format.html
+
+For instance, it will be of added values to the users and developers if:
+
+- a comprehensive NatSpec is provided on [LiquidityManager.sol](https://github.com/code-423n4/2023-01-numoen/blob/main/src/periphery/LiquidityManager.sol) and [LendgineRouter.sol](https://github.com/code-423n4/2023-01-numoen/blob/main/src/periphery/LendgineRouter.sol)

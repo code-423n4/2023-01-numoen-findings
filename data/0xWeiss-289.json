@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "0xWeiss",
+  "risk": "2",
+  "title": "Unchecked that the to address is nto the address of the tokens",
+  "issueId": 289,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/289"
+}

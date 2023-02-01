@@ -86,7 +86,7 @@ Manual Analysis
 Recommend defining constants for the numbers used throughout the code.
 
 
-# 5: USE OF BLOCK.TIMESTAMP
+# 4: USE OF BLOCK.TIMESTAMP
 
 Vulnerability details
 

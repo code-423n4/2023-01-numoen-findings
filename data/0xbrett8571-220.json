@@ -1,0 +1,8 @@
+{
+  "contest": 207,
+  "handle": "0xbrett8571",
+  "risk": "2",
+  "title": "Unsecured Token Transfer in SwapHelper Contract via Insecure SafeTransferLib Method.",
+  "issueId": 220,
+  "issueUrl": "https://github.com/code-423n4/2023-01-numoen-findings/issues/220"
+}
